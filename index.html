@@ -1,0 +1,507 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxC — McLaren</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">LuxC</div>
+
+        <!-- MOBILE MENU BUTTON -->
+        <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+            ☰
+        </button>
+
+        <!-- NAVIGATION -->
+        <nav id="mainNav">
+            <a href="index.html">Головна</a>
+            <a href="possibilities.html">Можливості</a>
+            <a href="faq.html">Часті запитання</a>
+        </nav>
+
+        <!-- HEADER BUTTONS -->
+        <div class="header-buttons">
+
+            <button class="search" onclick="openSearch()" title="Пошук">
+                ⌕
+            </button>
+
+            <button class="buy" onclick="openCatalog()">
+                Купити зараз ❯
+            </button>
+
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <section class="left-content">
+
+            <h1>
+                Гіперкар.<br>
+                Швидке та гарне авто від<br>
+                <span>LuxC</span>
+            </h1>
+
+            <div class="info">
+
+                <div class="stats">
+                    <h2>100k +</h2>
+                    <p>продано</p>
+                </div>
+
+                <div class="description">
+
+                    <p>
+                        <strong>LuxC</strong> — це поєднання
+                        неймовірної швидкості,
+                        передових технологій
+                        та унікального дизайну.
+                    </p>
+
+                    <p>
+                        Відчуй справжню свободу руху
+                        з легендарним британським
+                        брендом.
+                    </p>
+
+                    <button class="buy-main" onclick="openCatalog()">
+                        Купити зараз <span>➜</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="small-image">
+                <img src="car1.png" alt="McLaren">
+            </div>
+
+            <p class="bottom-text">
+                Кожен автомобіль McLaren створений із преміальних
+                матеріалів та інноваційних рішень, щоб дарувати
+                тобі максимум емоцій.
+            </p>
+
+            <div class="tags">
+                <span>#LuxC</span>
+                <span>#Speed</span>
+                <span>#WOW</span>
+            </div>
+
+        </section>
+
+        <!-- MAIN IMAGE -->
+        <section class="right-content">
+            <img src="car2.jpg" alt="McLaren Supercar">
+        </section>
+
+    </main>
+</div>
+
+
+<!-- CATALOG WINDOW -->
+
+<div class="shop-modal" id="catalogModal">
+
+    <div class="shop-content">
+
+        <button class="close-shop" onclick="closeCatalog()">×</button>
+
+        <p class="subtitle">LUXC EXCLUSIVE</p>
+
+        <h2>Обери свій <span>McLaren.</span></h2>
+
+        <p class="shop-description">
+            Вибери автомобіль, щоб переглянути його ціну.
+        </p>
+
+        <!-- SEARCH FIELD -->
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="carSearch"
+                placeholder="Знайти автомобіль..."
+                oninput="searchCars()"
+            >
+
+            <span>⌕</span>
+
+        </div>
+
+        <p id="noResults">
+            Автомобілів не знайдено.
+        </p>
+
+
+        <!-- CAR SELECTION -->
+
+        <div class="car-grid">
+
+            <div class="car-option" onclick="selectCar('720S')">
+                <img src="720S.jpg" alt="McLaren 720S">
+                <h3>McLaren 720S</h3>
+                <p>Спортивний суперкар</p>
+            </div>
+
+            <div class="car-option" onclick="selectCar('750S')">
+                <img src="750S.jpg" alt="McLaren 750S">
+                <h3>McLaren 750S</h3>
+                <p>Потужність і швидкість</p>
+            </div>
+
+            <div class="car-option" onclick="selectCar('Artura')">
+                <img src="artura.jpg" alt="McLaren Artura">
+                <h3>McLaren Artura</h3>
+                <p>Гібридні технології</p>
+            </div>
+
+            <div class="car-option" onclick="selectCar('765LT')">
+                <img src="765lt.webp" alt="McLaren 765LT">
+                <h3>McLaren 765LT</h3>
+                <p>Максимальна динаміка</p>
+            </div>
+
+        </div>
+
+
+        <!-- PRICE -->
+
+        <div class="selected-car" id="selectedCar">
+
+            <h2 id="carName">McLaren</h2>
+
+            <p class="price-label">
+                Демонстраційна ціна:
+            </p>
+
+            <h3 id="carPrice">—</h3>
+
+            <button class="buy-order" onclick="showOrder()">
+                Перейти до покупки ➜
+            </button>
+
+        </div>
+
+
+        <!-- ORDER FORM -->
+
+        <div class="order-section" id="orderSection">
+
+            <h2>Оформлення замовлення</h2>
+
+            <p id="orderCar"></p>
+
+            <form id="orderForm">
+
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Твоє ім'я"
+                    required
+                >
+
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    placeholder="Номер телефону"
+                    required
+                >
+
+                <input
+                    type="email"
+                    id="customerEmail"
+                    placeholder="Електронна пошта"
+                    required
+                >
+
+                <textarea
+                    id="customerMessage"
+                    placeholder="Додаткові побажання"
+                ></textarea>
+
+                <button type="submit" class="buy-order">
+                    Підтвердити замовлення ➜
+                </button>
+
+            </form>
+
+            <p id="successMessage"></p>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+// CAR DATABASE
+
+const cars = {
+
+    "720S": {
+        name: "McLaren 720S",
+        price: "$300 000"
+    },
+
+    "750S": {
+        name: "McLaren 750S",
+        price: "$380 000"
+    },
+
+    "Artura": {
+        name: "McLaren Artura",
+        price: "$330 000"
+    },
+
+    "765LT": {
+        name: "McLaren 765LT",
+        price: "$600 000"
+    }
+
+};
+
+let selectedModel = null;
+
+
+// MOBILE MENU
+
+function toggleMenu() {
+
+    const nav = document.getElementById("mainNav");
+    const header = document.querySelector("header");
+    const menuButton = document.getElementById("menuToggle");
+
+    nav.classList.toggle("active");
+    header.classList.toggle("menu-open");
+
+    if (nav.classList.contains("active")) {
+
+        menuButton.textContent = "✕";
+
+    } else {
+
+        menuButton.textContent = "☰";
+
+    }
+
+}
+
+
+// CLOSE MOBILE MENU WHEN CLICKING LINK
+
+document.querySelectorAll("#mainNav a").forEach(link => {
+
+    link.addEventListener("click", function() {
+
+        document.getElementById("mainNav").classList.remove("active");
+
+        document.querySelector("header").classList.remove("menu-open");
+
+        document.getElementById("menuToggle").textContent = "☰";
+
+    });
+
+});
+
+
+// OPEN CATALOG
+
+function openCatalog() {
+
+    document.getElementById("catalogModal").classList.add("active");
+
+    document.body.style.overflow = "hidden";
+
+}
+
+
+// OPEN SEARCH
+
+function openSearch() {
+
+    openCatalog();
+
+    const searchInput = document.getElementById("carSearch");
+
+    searchInput.value = "";
+
+    searchCars();
+
+    setTimeout(() => {
+
+        searchInput.focus();
+
+    }, 200);
+
+}
+
+
+// SEARCH CARS
+
+function searchCars() {
+
+    const input = document
+        .getElementById("carSearch")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const carOptions = document.querySelectorAll(".car-option");
+
+    let found = 0;
+
+    carOptions.forEach(car => {
+
+        const carName = car.innerText.toLowerCase();
+
+        if (carName.includes(input)) {
+
+            car.style.display = "block";
+
+            found++;
+
+        } else {
+
+            car.style.display = "none";
+
+        }
+
+    });
+
+    document.getElementById("noResults").style.display =
+        found === 0 ? "block" : "none";
+
+}
+
+
+// CLOSE CATALOG
+
+function closeCatalog() {
+
+    document.getElementById("catalogModal").classList.remove("active");
+
+    document.body.style.overflow = "auto";
+
+}
+
+
+// SELECT CAR
+
+function selectCar(model) {
+
+    selectedModel = model;
+
+    const car = cars[model];
+
+    document.getElementById("carName").textContent = car.name;
+
+    document.getElementById("carPrice").textContent = car.price;
+
+    document.getElementById("selectedCar").classList.add("active");
+
+    document.getElementById("orderSection").classList.remove("active");
+
+    document.getElementById("successMessage").textContent = "";
+
+    document.getElementById("selectedCar").scrollIntoView({
+
+        behavior: "smooth",
+
+        block: "nearest"
+
+    });
+
+}
+
+
+// SHOW ORDER FORM
+
+function showOrder() {
+
+    if (!selectedModel) return;
+
+    document.getElementById("orderCar").textContent =
+
+        cars[selectedModel].name + " — " + cars[selectedModel].price;
+
+    document.getElementById("orderSection").classList.add("active");
+
+    document.getElementById("orderSection").scrollIntoView({
+
+        behavior: "smooth",
+
+        block: "nearest"
+
+    });
+
+}
+
+
+// SUBMIT ORDER
+
+document.getElementById("orderForm").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("customerName").value;
+
+    document.getElementById("successMessage").textContent =
+
+        "Дякуємо, " + name + "! Заявку підготовлено. Для реального замовлення потрібне підключення сервера.";
+
+    this.reset();
+
+});
+
+
+// CLOSE WHEN CLICKING OUTSIDE
+
+document.getElementById("catalogModal").addEventListener("click", function(event) {
+
+    if (event.target === this) {
+
+        closeCatalog();
+
+    }
+
+});
+
+
+// CLOSE WITH ESCAPE
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+
+        closeCatalog();
+
+        // Close mobile menu too
+        document.getElementById("mainNav").classList.remove("active");
+
+        document.querySelector("header").classList.remove("menu-open");
+
+        document.getElementById("menuToggle").textContent = "☰";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
